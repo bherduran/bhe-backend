@@ -17,6 +17,8 @@ app.get('/posts', async (req, res) => {
   res.json(posts)
 })
 
+
+
 app.get('/posts/:id', async (req, res) => {
   const id = parseInt(req.params.id)
   const post = await prisma.post.findUnique({
@@ -33,4 +35,5 @@ app.get('/posts/:id', async (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server ${PORT} portunda çalışıyor`)
+  
 })
