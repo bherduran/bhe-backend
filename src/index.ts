@@ -1,12 +1,17 @@
 import express from 'express'
 import cors from 'cors'
 import prisma from './prisma.js'
+import authRouter from './auth.js'
+import { authenticate } from './middleware.js'
+
+
 
 const app = express()
 const PORT = 3001
 
 app.use(cors())
 app.use(express.json())
+app.use('/auth', authRouter)
 
 app.get('/', (req, res) => {
   res.json({ message: 'Backend çalışıyor!' })
@@ -37,7 +42,7 @@ app.listen(PORT, () => {
   
 })
 
-app.post('/posts', async (req, res) => {
+app.post('/posts', authenticate, async (req, res) => {
   const { title, content } = req.body
   const post = await prisma.post.create({
     data: {
