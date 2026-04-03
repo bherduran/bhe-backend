@@ -71,3 +71,34 @@ app.delete('/posts/:id', authenticate, async (req, res) => {
   })
   res.json({ message: 'Post deleted' })
 })
+
+app.get('/projects', async (req, res) => {
+  const projects = await prisma.project.findMany()
+  res.json(projects)
+})
+
+app.post('/projects', authenticate, async (req, res) => {
+  const { title, description, github, live, category } = req.body
+  const project = await prisma.project.create({
+    data: { title, description, github, live, category }
+  })
+  res.json(project)
+})
+
+app.put('/projects/:id', authenticate, async (req, res) => {
+  const id = parseInt(req.params['id'] as string)
+  const { title, description, github, live, category } = req.body
+  const project = await prisma.project.update({
+    where: { id },
+    data: { title, description, github, live, category }
+  })
+  res.json(project)
+})
+
+app.delete('/projects/:id', authenticate, async (req, res) => {
+  const id = parseInt(req.params['id'] as string)
+  await prisma.project.delete({
+    where: { id }
+  })
+  res.json({ message: 'Project deleted' })
+})

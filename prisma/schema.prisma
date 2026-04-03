@@ -10,7 +10,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-}
+  }
 
 model Post {
   id        Int      @id @default(autoincrement())
@@ -18,4 +18,18 @@ model Post {
   content   String
   createdAt DateTime @default(now())
   published Boolean  @default(false)
+}
+
+enum Category {
+  web
+  game
+}
+
+model Project {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  github      String
+  live        String
+  category    Category
 }
