@@ -18,7 +18,7 @@ export const authenticate = (req: Request, res: Response, next: NextFunction) =>
   }
 
   try {
-    jwt.verify(token, process.env.JWT_SECRET || 'REDACTED')
+    jwt.verify(token, process.env.JWT_SECRET!)
     next()
   } catch {
     res.status(401).json({ error: 'Invalid token' })
