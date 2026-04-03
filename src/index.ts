@@ -63,3 +63,11 @@ app.put('/posts/:id', authenticate, async (req, res) => {
   })
   res.json(post)
 })
+
+app.delete('/posts/:id', authenticate, async (req, res) => {
+  const id = parseInt(req.params['id'] as string)
+  await prisma.post.delete({
+    where: { id }
+  })
+  res.json({ message: 'Post deleted' })
+})
