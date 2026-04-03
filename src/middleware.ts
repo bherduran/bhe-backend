@@ -1,6 +1,5 @@
-import * as jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 import type { Request, Response, NextFunction } from 'express'
-import 'dotenv/config'
 
 export const authenticate = (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization
@@ -20,7 +19,8 @@ export const authenticate = (req: Request, res: Response, next: NextFunction) =>
   try {
     jwt.verify(token, process.env.JWT_SECRET!)
     next()
-  } catch {
+  } catch (err) {
+    console.error('JWT verify failed:', (err as Error).message, '| JWT_SECRET defined:', !!process.env.JWT_SECRET)
     res.status(401).json({ error: 'Invalid token' })
   }
 }
