@@ -52,3 +52,13 @@ app.post('/posts', authenticate, async (req, res) => {
   })
   res.json(post)
 })
+
+app.put('/posts/:id', authenticate, async (req, res) => {
+  const id = parseInt(req.params['id'] as string)
+  const { title, content } = req.body
+  const post = await prisma.post.update({
+    where: { id },
+    data: { title, content }
+  })
+  res.json(post)
+})
