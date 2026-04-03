@@ -31,5 +31,5 @@ model Project {
   description String
   github      String
   live        String
-  category    Category
+  category    String
 }
