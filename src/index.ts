@@ -11,7 +11,7 @@ const app = express()
 const PORT = 3001
 
 app.use(cors({
-  origin: 'https://portfolio-app-indol-three.vercel.app'
+  origin: ['https://portfolio-app-indol-three.vercel.app', 'https://bherduran.com', 'https://www.bherduran.com']
 }))
 app.use(express.json())
 app.use('/auth', authRouter)
