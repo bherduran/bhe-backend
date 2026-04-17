@@ -39,7 +39,8 @@ export const JsonNull = runtime.JsonNull;
  */
 export const AnyNull = runtime.AnyNull;
 export const ModelName = {
-    Post: 'Post'
+    Post: 'Post',
+    Project: 'Project'
 };
 /*
  * Enums
@@ -56,6 +57,14 @@ export const PostScalarFieldEnum = {
     content: 'content',
     createdAt: 'createdAt',
     published: 'published'
+};
+export const ProjectScalarFieldEnum = {
+    id: 'id',
+    title: 'title',
+    description: 'description',
+    github: 'github',
+    live: 'live',
+    category: 'category'
 };
 export const SortOrder = {
     asc: 'asc',

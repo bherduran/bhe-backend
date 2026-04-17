@@ -7,6 +7,8 @@
 *
 * 🟢 You can import this file directly.
 */
-// This file is empty because there are no enums in the schema.
-export {};
+export const Category = {
+    web: 'web',
+    game: 'game'
+};
 //# sourceMappingURL=enums.js.map

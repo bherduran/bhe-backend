@@ -1,4 +1,4 @@
-import * as jwt from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 export const authenticate = (req, res, next) => {
     const authHeader = req.headers.authorization;
     if (!authHeader) {
@@ -11,10 +11,11 @@ export const authenticate = (req, res, next) => {
         return;
     }
     try {
-        jwt.verify(token, process.env.JWT_SECRET || 'REDACTED');
+        jwt.verify(token, process.env.JWT_SECRET);
         next();
     }
-    catch {
+    catch (err) {
+        console.error('JWT verify failed:', err.message, '| JWT_SECRET defined:', !!process.env.JWT_SECRET);
         res.status(401).json({ error: 'Invalid token' });
     }
 };

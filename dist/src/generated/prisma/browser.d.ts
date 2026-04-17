@@ -7,4 +7,9 @@ export * from './enums.js';
  *
  */
 export type Post = Prisma.PostModel;
+/**
+ * Model Project
+ *
+ */
+export type Project = Prisma.ProjectModel;
 //# sourceMappingURL=browser.d.ts.map

@@ -126,6 +126,17 @@ export interface PrismaClient<in LogOpts extends Prisma.LogLevel = never, in out
     get post(): Prisma.PostDelegate<ExtArgs, {
         omit: OmitOpts;
     }>;
+    /**
+     * `prisma.project`: Exposes CRUD operations for the **Project** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more Projects
+      * const projects = await prisma.project.findMany()
+      * ```
+      */
+    get project(): Prisma.ProjectDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
 }
 export declare function getPrismaClientClass(): PrismaClientConstructor;
 //# sourceMappingURL=class.d.ts.map

@@ -46,7 +46,7 @@ export type PrismaVersion = {
     engine: string;
 };
 /**
- * Prisma Client JS version: 7.6.0
+ * Prisma Client JS version: 7.7.0
  * Query Engine version: 75cbdc1eb7150937890ad5465d861175c6624711
  */
 export declare const prismaVersion: PrismaVersion;
@@ -232,6 +232,7 @@ export type FieldRef<Model, FieldType> = runtime.FieldRef<Model, FieldType>;
 type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRef<Model, FieldType>;
 export declare const ModelName: {
     readonly Post: "Post";
+    readonly Project: "Project";
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 export interface TypeMapCb<GlobalOmitOptions = {}> extends runtime.Types.Utils.Fn<{
@@ -244,7 +245,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         omit: GlobalOmitOptions;
     };
     meta: {
-        modelProps: "post";
+        modelProps: "post" | "project";
         txIsolationLevel: TransactionIsolationLevel;
     };
     model: {
@@ -322,6 +323,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
                 };
             };
         };
+        Project: {
+            payload: Prisma.$ProjectPayload<ExtArgs>;
+            fields: Prisma.ProjectFieldRefs;
+            operations: {
+                findUnique: {
+                    args: Prisma.ProjectFindUniqueArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectPayload> | null;
+                };
+                findUniqueOrThrow: {
+                    args: Prisma.ProjectFindUniqueOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectPayload>;
+                };
+                findFirst: {
+                    args: Prisma.ProjectFindFirstArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectPayload> | null;
+                };
+                findFirstOrThrow: {
+                    args: Prisma.ProjectFindFirstOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectPayload>;
+                };
+                findMany: {
+                    args: Prisma.ProjectFindManyArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectPayload>[];
+                };
+                create: {
+                    args: Prisma.ProjectCreateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectPayload>;
+                };
+                createMany: {
+                    args: Prisma.ProjectCreateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                createManyAndReturn: {
+                    args: Prisma.ProjectCreateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectPayload>[];
+                };
+                delete: {
+                    args: Prisma.ProjectDeleteArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectPayload>;
+                };
+                update: {
+                    args: Prisma.ProjectUpdateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectPayload>;
+                };
+                deleteMany: {
+                    args: Prisma.ProjectDeleteManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateMany: {
+                    args: Prisma.ProjectUpdateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateManyAndReturn: {
+                    args: Prisma.ProjectUpdateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectPayload>[];
+                };
+                upsert: {
+                    args: Prisma.ProjectUpsertArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ProjectPayload>;
+                };
+                aggregate: {
+                    args: Prisma.ProjectAggregateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AggregateProject>;
+                };
+                groupBy: {
+                    args: Prisma.ProjectGroupByArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.ProjectGroupByOutputType>[];
+                };
+                count: {
+                    args: Prisma.ProjectCountArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.ProjectCountAggregateOutputType> | number;
+                };
+            };
+        };
     };
 } & {
     other: {
@@ -364,6 +439,15 @@ export declare const PostScalarFieldEnum: {
     readonly published: "published";
 };
 export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum];
+export declare const ProjectScalarFieldEnum: {
+    readonly id: "id";
+    readonly title: "title";
+    readonly description: "description";
+    readonly github: "github";
+    readonly live: "live";
+    readonly category: "category";
+};
+export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum];
 export declare const SortOrder: {
     readonly asc: "asc";
     readonly desc: "desc";
@@ -508,6 +592,7 @@ export type PrismaClientOptions = ({
 };
 export type GlobalOmitConfig = {
     post?: Prisma.PostOmit;
+    project?: Prisma.ProjectOmit;
 };
 export type LogLevel = 'info' | 'query' | 'warn' | 'error';
 export type LogDefinition = {

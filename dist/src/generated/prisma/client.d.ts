@@ -26,4 +26,9 @@ export { Prisma };
  *
  */
 export type Post = Prisma.PostModel;
+/**
+ * Model Project
+ *
+ */
+export type Project = Prisma.ProjectModel;
 //# sourceMappingURL=client.d.ts.map
