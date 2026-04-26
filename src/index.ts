@@ -12,8 +12,23 @@ import { authenticate } from './middleware.js'
 const app = express()
 const PORT = 3001
 
+const ALLOWED_ORIGINS = [
+  'https://portfolio-app-indol-three.vercel.app',
+  'https://bherduran.com',
+  'https://www.bherduran.com',
+  'http://localhost:5173',
+  'http://localhost:5174',
+  'http://localhost:5175',
+]
+
 app.use(cors({
-  origin: 'https://portfolio-app-indol-three.vercel.app'
+  origin: (origin, callback) => {
+    if (!origin || ALLOWED_ORIGINS.includes(origin)) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
 }))
 app.use(express.json())
 app.use(helmet())
