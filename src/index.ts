@@ -10,7 +10,7 @@ import { authenticate } from './middleware.js'
 
 
 const app = express()
-const PORT = 3001
+const PORT = process.env['PORT'] || 3001
 
 const ALLOWED_ORIGINS = [
   'https://portfolio-app-indol-three.vercel.app',
@@ -65,7 +65,7 @@ app.get('/posts/:id', async (req, res) => {
 })
 
 app.listen(PORT, () => {
-  console.log(`Server ${PORT} portunda Ã§alÄ±ÅŸÄ±yor`)
+  console.log(`Server ${PORT} portunda calisiyor`)
   
 })
 
