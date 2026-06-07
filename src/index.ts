@@ -1,5 +1,6 @@
 import 'dotenv/config'
-import express, { NextFunction, Request, Response } from 'express'
+import express from 'express'
+import type { NextFunction, Request, Response } from 'express'
 import helmet from 'helmet'
 import rateLimit from 'express-rate-limit'
 import cors from 'cors'
