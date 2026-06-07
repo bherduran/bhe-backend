@@ -20,11 +20,6 @@ model Post {
   published Boolean  @default(false)
 }
 
-enum Category {
-  web
-  game
-}
-
 model Project {
   id          Int      @id @default(autoincrement())
   title       String
